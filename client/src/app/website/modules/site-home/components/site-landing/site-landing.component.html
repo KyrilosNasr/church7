@@ -1,0 +1,16 @@
+<app-site-intro [banner]="introBanner"></app-site-intro>
+<div *ngFor="let sec of sections" [ngSwitch]="sec.sectionName">
+  <app-site-live-stream [isWhite]="sec.isWhite" *ngSwitchCase="GeneralSectionsEnum.Live"></app-site-live-stream>
+  <app-site-mass-calender [isWhite]="sec.isWhite" *ngSwitchCase="GeneralSectionsEnum.Masses" [showMore]="true"></app-site-mass-calender>
+  <app-site-home-seperator *ngSwitchCase="GeneralSectionsEnum.DivImage" [hasMarginBottom]="false" [fixed]="true" [banner]="sec.banner.imgUrl"></app-site-home-seperator>
+  <app-site-church-fathers [isWhite]="sec.isWhite" *ngSwitchCase="GeneralSectionsEnum.Fathers" [showMore]="true"></app-site-church-fathers>
+  <app-site-about-church [isWhite]="sec.isWhite" *ngSwitchCase="GeneralSectionsEnum.AboutCHurch" [showMore]="true"></app-site-about-church>
+  <app-site-home-gallery [isWhite]="sec.isWhite" *ngSwitchCase="GeneralSectionsEnum.Gallery" [showMore]="true"></app-site-home-gallery>
+  <app-site-events-carousel [isWhite]="sec.isWhite" *ngSwitchCase="GeneralSectionsEnum.Ads"></app-site-events-carousel>
+  <div *ngSwitchDefault></div>
+</div>
+
+
+<!-- <app-site-sound-media *ngSwitchCase="GeneralSectionsEnum.SoundCloud"></app-site-sound-media> -->
+<!-- <app-site-videos-carousel></app-site-videos-carousel> -->
+<!-- http://boltoncopts.org/wp-content/uploads/2017/11/cropped-12779085_10153439604893951_2889210514726304878_o.jpg -->

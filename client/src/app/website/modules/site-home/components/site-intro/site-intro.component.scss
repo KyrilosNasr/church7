@@ -1,0 +1,27 @@
+.intro {
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: calc(100vh - 128px) !important;
+}
+
+@media (max-width: 500px) {
+  .intro {
+    min-height: 145px !important;
+    background-attachment: initial;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .intro {
+    min-height: 245px !important;
+    background-attachment: initial;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .intro {
+    min-height: 445px !important;
+    background-attachment: initial;
+  }
+}

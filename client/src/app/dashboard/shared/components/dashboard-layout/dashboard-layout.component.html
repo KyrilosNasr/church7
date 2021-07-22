@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <app-dashboard-navbar class="px-0"></app-dashboard-navbar>
+        <app-dashboard-sidebar class="px-0"></app-dashboard-sidebar>
+        <main class="col-md-9 me-sm-auto col-lg-10 px-md-4 bg-light pt-5">
+            <div class="w-100 p-3">
+              <router-outlet></router-outlet>
+            </div>
+        </main>
+    </div>
+</div>
+<p-confirmDialog #cd [style]="{width: '50vw'}" dir="rtl">
+  <ng-template pTemplate="footer">
+      <button type="button" pButton icon="pi pi-times" label="إالغاء" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="pi pi-check" label="تأكيد" (click)="cd.accept()"></button>
+  </ng-template>
+</p-confirmDialog>

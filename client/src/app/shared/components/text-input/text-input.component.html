@@ -1,0 +1,56 @@
+<!-- <div class="form-label-group">
+    (input)="onChange($event.target.value)"
+    <input
+        [ngClass]="(controlDir?.control?.touched)
+            ? !controlDir.control.valid ? 'is-invalid' : 'is-valid' : null"
+        [type]="type"
+        (change)="onChange($event.target.va)"
+        (blur)="onTouched()"
+        #input
+        class="form-control"
+        placeholder="{{label}}"
+    >
+    <div *ngIf="controlDir?.control?.status === 'PENDING'" class="fa fa-spinner fa-spin loader"></div>
+    <label for="{{label}}">{{label}}</label>
+    <div class="invalid-feedback" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.touched)">
+        <span *ngIf="controlDir.control.errors?.required">{{label}} is required</span>
+        <span *ngIf="controlDir.control.errors?.pattern">Invalid email address</span>
+
+    </div>
+
+    <div class="invalid-feedback d-block" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.dirty)" >
+        <span *ngIf="controlDir.control.errors?.emailExists">Email address is in use</span>
+    </div>
+</div> -->
+
+<!-- <mat-form-field appearance="legacy" class="w-100 text-right">
+  <mat-label (click)="onTouched()">{{label}}</mat-label>
+  <input (click)="onTouched()" (input)="onChange($event)" [type]="type" (blur)="onTouched()" #input matInput
+    [placeholder]="label">
+  <mat-icon *ngIf="controlDir?.control?.status === 'PENDING'" matSuffix><i class="fa fa-spinner fa-spin loader"></i></mat-icon>
+  <mat-icon *ngIf="icon" matSuffix><i [class]="icon"></i></mat-icon>
+  <div class="invalid-feedback" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.touched)">
+    <span *ngIf="controlDir.control?.errors?.required">{{label}} is required</span>
+    <span *ngIf="controlDir.control?.errors?.pattern">Invalid email address</span>
+    <mat-error *ngIf="controlDir.control?.errors?.required">حقل {{label}} مطلوب</mat-error>
+
+</div>
+
+<div class="invalid-feedback d-block" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.dirty)" >
+    <span *ngIf="controlDir.control?.errors?.emailExists">Email address is in use</span>
+</div>
+</mat-form-field> -->
+
+<mat-form-field #materialFormField class="form-field--full-width" [appearance]="appearance">
+  <span matPrefix>
+    <ng-content select="[prefix]"></ng-content>
+  </span>
+  <mat-label>{{label}}</mat-label>
+  <ng-content></ng-content>
+  <span matSuffix>
+    <ng-content select="[suffix]"></ng-content>
+  </span>
+  <mat-error>
+    <!-- <span [appValidationDisplay]="control" [fieldName]="label"></span> -->
+  </mat-error>
+</mat-form-field>

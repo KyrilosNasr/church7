@@ -1,0 +1,94 @@
+<div>
+  <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()" dir="rtl">
+    <div class="row my-4 border rounded px-3 pt-3 pb-2 position-relative">
+      <div class="col-md-4">
+        <mat-form-field appearance="legacy" class="w-100 text-right mb-3">
+          <mat-label>اسم الخدمة</mat-label>
+          <input formControlName="name" matInput placeholder="اسم الخدمة">
+          <mat-icon matSuffix><i class="pi pi-link"></i></mat-icon>
+          <mat-error *ngFor="let validation of validation_messages">
+            <mat-error class="error-message"
+              *ngIf="fatherForm?.get('name')?.hasError(validation.type) && (fatherForm.get('name').dirty || fatherForm.get('name').touched)">
+              اسم الخدمة {{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="legacy" class="w-100 text-right mb-3">
+          <mat-label>مرحلة</mat-label>
+          <input formControlName="grade" matInput placeholder="مرحلة">
+          <mat-icon matSuffix><i class="pi pi-link"></i></mat-icon>
+          <mat-error *ngFor="let validation of validation_messages">
+            <mat-error class="error-message"
+              *ngIf="fatherForm?.get('grade')?.hasError(validation.type) && (fatherForm.get('grade').dirty || fatherForm.get('grade').touched)">
+              مرحلة {{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="legacy" class="w-100 text-right mb-3">
+          <mat-label>المكان</mat-label>
+          <input formControlName="place" matInput placeholder="المكان">
+          <mat-icon matSuffix><i class="pi pi-link"></i></mat-icon>
+          <mat-error *ngFor="let validation of validation_messages">
+            <mat-error class="error-message"
+              *ngIf="fatherForm?.get('place')?.hasError(validation.type) && (fatherForm.get('place').dirty || fatherForm.get('place').touched)">
+              المكان {{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="legacy" class="w-100 text-right mb-3">
+          <mat-label>اليوم</mat-label>
+          <mat-select formControlName="day">
+            <mat-option *ngFor="let o of days" [value]="o.id">{{o.name | transloco}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="legacy" class="w-100 text-right mb-3 position-relative">
+          <mat-label (click)="startTime.toggle()">وقت البدء</mat-label>
+          <input class="pointer" (click)="startTime.toggle()" (keypress)="noTyping()" [value]="startTime.value? (startTime.value | date: 'shortTime') : null" matInput placeholder="وقت البدء">
+          <p-calendar hourFormat="12" class="input-overlay" formControlName="startTime" #startTime [timeOnly]="true" inputId="timeonly"></p-calendar>
+          <mat-error *ngFor="let validation of validation_messages">
+            <mat-error class="error-message"
+            *ngIf="massForm?.get('startTime')?.hasError(validation.type) && (massForm.get('startTime').dirty || massForm.get('startTime').touched)">
+            وقت البدء {{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="legacy" class="w-100 text-right mb-3 position-relative">
+          <mat-label (click)="endTime.toggle()">وقت الإنتهاء</mat-label>
+          <input class="pointer" (click)="endTime.toggle()" (keypress)="noTyping()" [value]="endTime.value? (endTime.value | date: 'shortTime') : null" matInput placeholder="وقت الإنتهاء">
+          <p-calendar hourFormat="12" class="input-overlay" formControlName="endTime" #endTime [timeOnly]="true" inputId="timeonly"></p-calendar>
+          <mat-error *ngFor="let validation of validation_messages">
+            <mat-error class="error-message"
+            *ngIf="massForm?.get('endTime')?.hasError(validation.type) && (massForm.get('endTime').dirty || massForm.get('endTime').touched)">
+            وقت الإنتهاء {{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="legacy" class="w-100 text-right mb-3">
+          <mat-label>ترتيب الظهور</mat-label>
+          <input type="number" formControlName="displayOrder" matInput placeholder="ترتيب الظهور">
+          <mat-icon matSuffix><i class="pi pi-link"></i></mat-icon>
+
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-slide-toggle formControlName="isActive">مٌفعل</mat-slide-toggle>
+      </div>
+
+      <footer class="w-100 text-start pt-2 border-top">
+        <button mat-flat-button color="primary" [disabled]="submitted">حفظ</button>
+      </footer>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+@function get-vw($target) {
+  $vw-context: (1000*.01) * 1px;
+  @return ($target/$vw-context) * 1vw;
+}
+$window-width: get-vw(270px);
+.banner-img{
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center center ;
+  height: $window-width;
+}

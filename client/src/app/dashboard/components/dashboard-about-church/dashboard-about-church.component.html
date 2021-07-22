@@ -1,0 +1,22 @@
+<div>
+  <form [formGroup]="churchForm" (ngSubmit)="onSubmit()" dir="rtl">
+    <div class="row my-4 border rounded px-3 pt-3 pb-2 position-relative">
+      <div class="col-md-4">
+        <app-images-popup [formGroup]="churchForm" [controlName]="'imageId'" [isRequired]="true" [label]="'صورة الموضوع'" #imagesPopupFather  ></app-images-popup>
+      </div>
+
+      <div class="col-md-4">
+        <app-images-popup [formGroup]="churchForm" [controlName]="'bannerId'" [isRequired]="false" [label]="'صورة القسم'" #imagesPopupFather  ></app-images-popup>
+      </div>
+
+      <div class="col-md-12 my-3">
+        <mat-label>عن الكنيسة</mat-label>
+        <p-editor dir="ltr" formControlName="description" [style]="{'height':'320px'}"></p-editor>
+      </div>
+
+      <footer class="w-100 text-start pt-2 border-top">
+        <button mat-flat-button color="primary" [disabled]="submitted">حفظ</button>
+      </footer>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+nav.navbar {
+  border-bottom: 3px solid #fff;
+}
+.custom-dropdown-hover {
+
+  &:hover > .dropdown-menu {
+    display: block;
+  }
+
+}
+.nav-link {cursor: pointer;}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #1e2125 !important;
+  background-color: #e9ecef !important;
+}

@@ -1,0 +1,27 @@
+  <div [class.bg-light]="showMore && !isWhite" [class.py-5]="showMore" [class.pb-5]="!showMore" class="w-100 overflow-hidden" >
+    <app-site-home-seperator *ngIf="!showMore" [fixed]="false" [banner]="getImage(banner)"></app-site-home-seperator>
+  <div class="container" [class.position-relative]="showMore">
+    <div *ngIf="showMore" [class.showmore-layout-w]="isWhite" [class.showmore-layout]="!isWhite">
+      <div *ngIf="showMore" class="w-100 text-center mt-4">
+        <a class="main-btn" routerLink="/gallery">عرض الكل</a>
+      </div>
+    </div>
+    <h2 class="text-center">صور</h2>
+    <span class="mb-5 mt-3 small-hr"></span>
+    <div [class.gallery-showMore]="showMore" class="gallery" >
+      <div *ngFor="let img of images; let i = index" class="gallery__img position-relative">
+        <div class="gallery__img--inner" (click)="showLightbox(i)"  [style.background-image]="getImageUrl(img.image)">
+          <div class="skeleton"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!showMore && (this.images.length < totalCount)" class="w-100 d-block text-center mb-4">
+  <a class="main-btn" (click)="getSec()">عرض المزيد</a>
+</div>
+<ng-image-fullscreen-view
+    [images]="images"
+    [imageIndex]="selectedImageIndex"
+    [show]="showFlag"
+    (close)="closeEventHandler()"></ng-image-fullscreen-view>

@@ -1,0 +1,18 @@
+<div class="py-5" [class.bg-light]="isWhite">
+  <div class="container">
+    <h2 class="text-center">إعلانات هامة</h2>
+    <span class="mb-5 mt-3 small-hr"></span>
+
+    <div class="box-main p-1">
+      <p-skeleton *ngIf="!banners" class="skeleton" height="27vw"></p-skeleton>
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of banners; let i = index">
+          <ng-template *ngIf="slide.isActive" carouselSlide [id]="i.toString()">
+              <div class="banner-img" [style.background-image]="getImageUrl(slide.image.imgUrl)"></div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+
+    </div>
+  </div>
+</div>

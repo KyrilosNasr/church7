@@ -1,0 +1,143 @@
+<div [class.bg-light]="showMore && !isWhite" [class.py-5]="showMore" [class.pb-5]="!showMore" class="w-100">
+  <app-site-home-seperator *ngIf="!showMore" [fixed]="false" [banner]="banner?.imgUrl">
+  </app-site-home-seperator>
+
+  <div class="container" [class.position-relative]="showMore">
+    <div *ngIf="showMore" [class.showmore-layout-w]="isWhite" [class.showmore-layout]="!isWhite">
+      <div *ngIf="showMore" class="w-100 text-center mt-4">
+        <a class="main-btn" routerLink="/fathers">عرض الكل</a>
+      </div>
+    </div>
+    <h2 class="text-center">أباء الكنيسة</h2>
+    <span class="mb-5 mt-3 small-hr"></span>
+
+    <div *ngIf="fathers">
+      <div class="d-flex justify-content-center" dir="rtl">
+        <div class="box-main bg-light p-3 d-flex justify-content-between mb-3">
+          <div class="small-card-img" [style.background-image]="'url(' + bishop.img + ')'"></div>
+          <div class="pe-3">
+            <h5>صاحب النيافة والغبطة ال{{bishop.name}}</h5>
+            <p>{{bishop.bishopType}}</p>
+            <div class="pt-4">
+              <div>تاريخ الرهبنة : {{bishop.monasticDate}}</div>
+              <div>تاريخ الرسامة : {{bishop.ordinationDate}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" dir="rtl">
+        <div class="col-md-4" *ngFor="let father of fathers">
+          <div *ngIf="father.isActive" class="box-main bg-light p-3 d-flex mb-3">
+            <!-- <img src="{{father?.image?.imgUrl}}" alt="" srcset=""> -->
+            <div class="small-card-img" *ngIf="father?.image?.imgUrl"
+              [style.background-image]="getImageUrl(father?.image?.imgUrl)"></div>
+            <div class="pe-3 flex-column d-flex justify-content-between">
+              <div>
+                <h5>ال{{father.priestlyRank | transloco}} {{father.name}}</h5>
+                <div>تاريخ الرسامة : {{father.priestlyDate | date:'short'}}</div>
+                <div *ngIf="father.deathDate">تاريخ النياحة : {{father.deathDate | date:'short'}}</div>
+              </div>
+              <div class="mb-2">
+                <a *ngIf="!father.isDead" class="main-btn px-2 font-12"
+                  [routerLink]="['/confession/', father.id]">مواعيد الإعترافات</a>
+                <a *ngIf="father.isDead" class="main-btn font-12 px-2"
+                  [routerLink]="['/fathers/', father.id]">تفاصيل</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="!fathers">
+      <div class="d-flex justify-content-center" dir="rtl">
+        <div class="box-main bg-light p-3 d-flex justify-content-between mb-3">
+          <div class="small-card-img">
+            <p-skeleton styleClass="p-mb-2 h-100"></p-skeleton>
+          </div>
+          <div class="pe-3">
+            <h5>
+              <p-skeleton width="12rem" styleClass="p-mb-2"></p-skeleton>
+            </h5>
+            <p>
+              <p-skeleton width="12rem" styleClass="p-mb-2"></p-skeleton>
+            </p>
+            <div class="pt-4">
+              <div>
+                <p-skeleton width="7rem" styleClass="p-mb-2 mb-3"></p-skeleton>
+              </div>
+              <div>
+                <p-skeleton width="7rem" styleClass="p-mb-2"></p-skeleton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" dir="rtl">
+        <div class="col-md-4">
+          <div class="box-main bg-light p-3 d-flex mb-3">
+            <div class="small-card-img">
+              <p-skeleton styleClass="p-mb-2 h-100"></p-skeleton>
+            </div>
+            <div class="pe-3 flex-column d-flex justify-content-between">
+              <div>
+                <h5>
+                  <p-skeleton width="12rem" styleClass="p-mb-2"></p-skeleton>
+                </h5>
+                <div>
+                  <p-skeleton width="7rem" styleClass="p-mb-2 mb-3"></p-skeleton>
+                </div>
+              </div>
+              <div class="mb-2">
+                <p-skeleton width="6rem" height="2rem"></p-skeleton>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box-main bg-light p-3 d-flex mb-3">
+            <div class="small-card-img">
+              <p-skeleton styleClass="p-mb-2 h-100"></p-skeleton>
+            </div>
+            <div class="pe-3 flex-column d-flex justify-content-between">
+              <div>
+                <h5>
+                  <p-skeleton width="12rem" styleClass="p-mb-2"></p-skeleton>
+                </h5>
+                <div>
+                  <p-skeleton width="7rem" styleClass="p-mb-2 mb-3"></p-skeleton>
+                </div>
+              </div>
+              <div class="mb-2">
+                <p-skeleton width="6rem" height="2rem"></p-skeleton>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box-main bg-light p-3 d-flex mb-3">
+            <div class="small-card-img">
+              <p-skeleton styleClass="p-mb-2 h-100"></p-skeleton>
+            </div>
+            <div class="pe-3 flex-column d-flex justify-content-between">
+              <div>
+                <h5>
+                  <p-skeleton width="12rem" styleClass="p-mb-2"></p-skeleton>
+                </h5>
+                <div>
+                  <p-skeleton width="7rem" styleClass="p-mb-2 mb-3"></p-skeleton>
+                </div>
+              </div>
+              <div class="mb-2">
+                <p-skeleton width="6rem" height="2rem"></p-skeleton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

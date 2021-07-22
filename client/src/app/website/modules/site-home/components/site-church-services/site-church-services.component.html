@@ -1,0 +1,9 @@
+<div class="w-100 pb-5 short-sec" dir="rtl" *ngIf="service?.isActive">
+  <app-site-home-seperator [fixed]="false" [banner]="service.banner.imgUrl"></app-site-home-seperator>
+  <div class="container">
+    <h2 class="text-center">{{service.name}}</h2>
+    <span class="mb-5 mt-3 small-hr"></span>
+
+    <div [innerHtml]="service.description"></div>
+  </div>
+</div>

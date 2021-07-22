@@ -1,0 +1,12 @@
+<form [formGroup]="gallerySecForm" (ngSubmit)="onSubmit()" dir="rtl">
+
+  <div class="row mt-4 mx-0 border rounded px-3 pt-3 pb-2 position-relative">
+    <div class="col-md-4">
+      <app-images-popup [formGroup]="gallerySecForm" [controlName]="'bannerId'" [isRequired]="true" [label]="'صورة القسم'" #imagesPopupFather  ></app-images-popup>
+    </div>
+    <footer class="w-100 text-start pt-2 border-top mt-3">
+      <button type="submit" mat-flat-button color="primary">حفظ</button>
+    </footer>
+  </div>
+
+</form>

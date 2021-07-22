@@ -1,0 +1,96 @@
+<div [class.bg-light]="showMore && !isWhite" [class.py-5]="showMore" [class.pb-5]="!showMore" class="w-100">
+  <app-site-home-seperator *ngIf="!showMore" [fixed]="true" [banner]="banner"></app-site-home-seperator>
+
+  <div class="container" [class.position-relative]="showMore">
+    <div *ngIf="showMore" [class.showmore-layout-w]="isWhite" [class.showmore-layout]="!isWhite">
+      <div *ngIf="showMore" class="w-100 text-center mt-4">
+        <a class="main-btn" routerLink="/masses">عرض الكل</a>
+      </div>
+    </div>
+
+
+
+    <div [class.showMore]="showMore" class="px-3 scroll-transparent">
+      <h2 class="text-center">مواعيد القداسات</h2>
+      <span class="mb-5 mt-3 small-hr"></span>
+
+      <div class="row align-items-start">
+        <div class="col-md-4">
+          <div *ngIf="specialDays && specialDays.length > 0">
+
+            <h3 class="w-100 text-end mt-4 mb-3">
+              مناسبات خاصة
+            </h3>
+            <div *ngFor="let mass of specialDays" class="box-main bg-white row mb-2 py-2 px-3 align-items-center mx-0"
+            dir="rtl">
+              <div class="col-2">
+                <div>
+                  {{ findValue(days, mass.day) | transloco }}
+                </div>
+                <div>
+                  {{mass.date | date:"shortDate"}}
+                </div>
+              </div>
+              <div class="col">
+                <div *ngFor="let event of mass.events; let last = last">
+                  <div *ngIf="event.isActive" [class.border-bottom]="!last" [class.mb-3]="!last" class=" pb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5>{{event.name}}</h5>
+                      <span dir="ltr">{{event.startTime | date:"shortTime"}} - {{event.endTime | date:"shortTime"}}</span>
+                    </div>
+                    <div>{{event.place}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div *ngIf="nonRepeatedMasses && nonRepeatedMasses.length > 0">
+            <h3 class="w-100 text-end mt-4 mb-3">
+              القداسات الغير أسبوعية
+            </h3>
+            <div *ngFor="let mass of nonRepeatedMasses" class="box-main bg-white row mb-2 py-2 px-3 align-items-center mx-0"
+              dir="rtl">
+              <div class="col-2">{{ findValue(days, mass.day) | transloco }}</div>
+              <div class="col">
+                <div *ngFor="let event of mass.events; let last = last">
+                  <div *ngIf="event.isActive" [class.border-bottom]="!last" [class.mb-3]="!last" class=" pb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5>{{event.name}} - الأسبوع {{event.order}}</h5>
+                      <span dir="ltr">{{event.startTime | date:"shortTime"}} - {{event.endTime | date:"shortTime"}}</span>
+                    </div>
+                    <div>{{event.place}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h3 class="w-100 text-end mt-4 mb-3">
+            القداسات العامة
+          </h3>
+          <div *ngFor="let mass of repeatedMasses" class="box-main bg-white row mb-2 py-2 px-3 align-items-center mx-0"
+          dir="rtl">
+            <div class="col-2">{{ findValue(days, mass.day) | transloco }}</div>
+            <div class="col">
+              <div *ngFor="let event of mass.events; let last = last">
+                <div *ngIf="event.isActive" [class.border-bottom]="!last" [class.mb-3]="!last" class=" pb-2">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5>{{event.name}}</h5>
+                    <span dir="ltr">{{event.startTime | date:"shortTime"}} - {{event.endTime | date:"shortTime"}}</span>
+                  </div>
+                  <div>{{event.place}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

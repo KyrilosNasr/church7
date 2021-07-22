@@ -1,0 +1,39 @@
+<ng-container [formGroup]="formGroup">
+<span class="d-inline-block ps-3"><label class="d-block">{{label}}</label></span>
+<span><button type="button" (click)="show($event)" mat-flat-button color="primary">{{(selectedImage && formGroup.controls[this.controlName].valid) ? selectedImage.title
+    : 'اختار صورة'}}</button></span>
+    <div>
+      <mat-error *ngFor="let validation of validation_messages">
+        <mat-error class="error-message font-12"
+          *ngIf="formGroup?.get(controlName)?.hasError(validation.type)">
+          {{label}} {{validation.message}}</mat-error>
+      </mat-error>
+    </div>
+<p-overlayPanel [baseZIndex]="9000" dir="rtl" #op [showCloseIcon]="false" [baseZIndex]="9999">
+    <button type="button" mat-flat-button class="mb-3" color="primary" (click)="file.click()">+ إضافة صورة جديدة</button>
+    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+    <input type="hidden" [formControlName]="controlName" [required]="isRequired">
+
+    <ng-template pTemplate>
+
+    <p-table dir="rtl" [totalRecords]="totalRecords" [value]="images" [(selection)]="selectedImage"
+    selectionMode="single" (onRowSelect)="onRowSelect($event)" [lazy]="true" (onLazyLoad)="getImages($event)"
+    [paginator]="false" [totalRecords]="totalRecords" [loading]="tableLoading" [globalFilterFields]="['image', 'title']">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="title">عنوان<p-sortIcon field="title"></p-sortIcon>
+        </th>
+        <th>الصورة</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-img>
+      <tr [pSelectableRow]="rowData">
+        <td class="text-break">{{img?.title}}</td>
+        <td class="td-actions"><img height="50px" src="{{img?.imgUrl}}" [alt]="img?.image" class="product-image img-fluid" /></td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-paginator [rows]="3" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+</ng-template>
+</p-overlayPanel>
+</ng-container>

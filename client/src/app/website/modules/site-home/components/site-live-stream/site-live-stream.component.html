@@ -1,0 +1,13 @@
+<div [class.bg-light]="showMore && !isWhite" *ngIf="isActive" class="w-100 py-5" dir="rtl">
+    <div class="container">
+        <h2 class="text-center">البث المباشر</h2>
+        <span class="mb-5 mt-3 small-hr"></span>
+
+        <div class="box-main p-1 position-relative">
+            <p-skeleton class="skeleton" height="515px"></p-skeleton>
+            <iframe width="100%" height="515"  title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+</div>

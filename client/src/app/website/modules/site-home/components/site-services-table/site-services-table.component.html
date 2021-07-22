@@ -1,0 +1,30 @@
+<div class="w-100 pb-5" dir="rtl">
+    <app-site-home-seperator [fixed]="false" [banner]="banner"></app-site-home-seperator>
+    <div class="container">
+      <h2 class="text-center">التربية الكنسية</h2>
+      <span class="mb-5 mt-3 small-hr"></span>
+        
+      <table class="table table-striped" dir="rtl">
+        <thead>
+          <tr>
+            <th scope="col">الخدمة</th>
+            <th scope="col">المرحلة</th>
+            <th scope="col">اليوم</th>
+            <th scope="col">التوقيت</th>
+            <th scope="col">المكان</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of services">
+            <td>{{s.name}}</td>
+            <td>{{s.age}}</td>
+            <td>{{s.day}}</td>
+            <td dir="ltr" class="text-end">{{s.start}} ~ {{s.end}}</td>
+            <td>{{s.place}}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+  </div>
+  

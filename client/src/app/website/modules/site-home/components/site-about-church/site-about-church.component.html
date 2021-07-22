@@ -1,0 +1,22 @@
+<div *ngIf="aboutChurch" [class.bg-light]="showMore && !isWhite" [class.py-5]="showMore" [class.pb-5]="!showMore" class="w-100" dir="rtl">
+  <app-site-home-seperator *ngIf="!showMore" [fixed]="false" [banner]="aboutChurch?.banner?.imgUrl"></app-site-home-seperator>
+  <div class="container">
+    <h2 class="text-center">عن الكنيسة</h2>
+    <span class="mb-5 mt-3 small-hr"></span>
+    <div class="row">
+      <div class="col-md-4">
+        <img width="auto" height="325px" [src]="aboutChurch?.image?.imgUrl" alt="" srcset="">
+      </div>
+      <div class="col-md-8" [class.position-relative]="showMore">
+        <div *ngIf="showMore" class="pt-4" [class.showmore-layout-w]="isWhite" [class.showmore-layout]="!isWhite">
+          <div *ngIf="showMore" class="w-100 text-center">
+            <a class="main-btn" routerLink="/about-church">عرض الكل</a>
+          </div>
+        </div>
+        <div [innerHtml]="aboutChurch?.description"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,6 @@
+<div class="position-relative section-banner" [class.mb-5]="hasMarginBottom">
+  <div *ngIf="banner" class="img-cover h-100" [class.background-attachment]="fixed"
+  [style.background-image]="'url(' + banner"></div>
+  <p-skeleton [styleClass]="'section-banner-skeleton'"></p-skeleton>
+
+</div>

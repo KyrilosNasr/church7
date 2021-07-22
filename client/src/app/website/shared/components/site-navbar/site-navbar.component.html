@@ -1,0 +1,60 @@
+<nav [class.fixed-top]="isSticky" id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark" dir="rtl">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a mat-button class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/">الرئيسية</a>
+        </li>
+        <li class="nav-item dropdown custom-dropdown-hover">
+          <a mat-button class="nav-link dropdown-toggle" routerLinkActive="active" role="button" aria-expanded="false">
+            عن الكنيسة
+          </a>
+          <ul class="dropdown-menu text-end">
+            <li><a mat-button class="dropdown-item pointer"  routerLink="/about-church" routerLinkActive="active">تاريخ الكنيسة</a></li>
+            <li><a mat-button class="dropdown-item pointer" routerLink="/fathers" routerLinkActive="active">أباء الكنيسة</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown custom-dropdown-hover">
+          <a mat-button class="nav-link dropdown-toggle" role="button" aria-expanded="false">
+            خدمات الكنيسة
+          </a>
+          <ul class="dropdown-menu text-end">
+            <li><a mat-button class="dropdown-item pointer" routerLink="/church-service/sunday-school">التربية الكنيسة</a></li>
+            <li *ngFor="let name of names"><a mat-button class="dropdown-item pointer" [routerLink]="['/church-service/', name.id]">{{name.name}}</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a mat-button class="nav-link" routerLinkActive="active" routerLink="/masses">مواعيد القداسات</a>
+        </li>
+        <li class="nav-item">
+          <a mat-button class="nav-link" routerLink="/gallery" routerLinkActive="active">صور</a>
+        </li>
+        <li class="nav-item">
+          <a mat-button class="nav-link">ميديا الكنيسة</a>
+        </li>
+        <li class="nav-item">
+          <a mat-button class="nav-link">إعلانات هامة</a>
+        </li>
+
+        <li class="nav-item">
+          <a mat-button *ngIf="!(checkAuth())" class="nav-link" routerLink="/login">تسجيل الدخول</a>
+          <a mat-button *ngIf="checkAuth()" class="nav-link" routerLink="/dashboard">لوحة التحكم</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

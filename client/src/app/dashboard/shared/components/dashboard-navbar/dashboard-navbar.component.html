@@ -1,0 +1,13 @@
+<header class="navbar navbar-light bg-light flex-md-nowrap px-0 py-2 shadow justify-content-start fixed-top">
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav px-3 flex-row-reverse">
+      <li *ngIf="checkAuth()" class="nav-item text-nowrap">
+        <a matRipple class="nav-link px-2 pointer" (click)="logout()" routerLink="/">الرئيسية</a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a matRipple class="nav-link px-2 pointer" (click)="logout()">تسجيل الخروج</a>
+      </li>
+    </ul>
+  </header>
