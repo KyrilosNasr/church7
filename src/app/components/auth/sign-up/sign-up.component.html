@@ -1,0 +1,35 @@
+<div class="body">
+  <h2 class="text-center">Register</h2>
+  <form #f="ngForm" (ngSubmit)="signup(f)">
+    <input class="form-control" ngModel name="name" #name="ngModel" placeholder="your Name" type="text" required>
+    <div class="alert alert-danger" *ngIf="name.invalid && name.touched"> Name Is Required</div>
+
+    <input class="form-control" ngModel name="email" #email="ngModel" placeholder="Enteryour Email" type="email"
+      required email>
+    <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched"> Email Is Required</div>
+    <div class="alert alert-danger" *ngIf=" email.errors?.email && email.touched"> It's Not Email Format</div>
+
+
+    <input class="form-control" #password="ngModel" ngModel name="password" placeholder="Your Password" type="password"
+      required minlength="6">
+    <div class="alert alert-danger" *ngIf="password.errors?.required && password.touched"> Password Is Required</div>
+    <div class="alert alert-danger" *ngIf=" password.errors?.minlength && password.touched"> Password Must be at least 6
+      characters</div>
+
+    <input class="form-control" #confPass="ngModel" ngModel name="confPass" placeholder="Confirm Your  Password"
+      type="password" required>
+    <div class="alert alert-danger" *ngIf="confPass.invalid && confPass.touched"> Confirmation Password Is Required
+    </div>
+    <div class="alert alert-danger" *ngIf="confPass.value !== password.value && confPass.touched"> Confirmation Password
+      Is Not Identical to the frist password</div>
+
+    <input class="form-control" ngModel #address="ngModel" name="address" placeholder="Enter Your Address Please"
+      type="text" required>
+    <div class="alert alert-danger" *ngIf="address.invalid && address.touched"> Address Is Required</div>
+
+    <button id="signup" class="btn btn-outline-primary || password.value 1== confPass.value" [disabled]="f.invalid">
+      Sign me Up</button>
+
+  </form>
+  <div class="alert alert-danger" *ngIf="errorMsg" style="margin-top: 30px;"> {{ errorMsg }}</div>
+</div>

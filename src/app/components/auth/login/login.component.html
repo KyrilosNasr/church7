@@ -1,0 +1,23 @@
+<div class="body">
+    <h2 class="text-center">Register</h2>
+    <form #f="ngForm">
+
+        <input class="form-control" ngModel name="email" #email="ngModel" placeholder="your Email" type="email" required
+            email>
+        <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched"> Email Is Required</div>
+        <div class="alert alert-danger" *ngIf=" email.errors?.email && email.touched"> It's Not Email Format</div>
+
+
+        <input class="form-control" #password="ngModel" ngModel name="password" placeholder="password" type="password"
+            required minlength="6">
+        <div class="alert alert-danger" *ngIf="password.errors?.required && password.touched"> Password Is Required
+        </div>
+        <div class="alert alert-danger" *ngIf=" password.errors?.minlength && password.touched"> Password Must be at
+            least 6characters</div>
+
+
+        <button id="signup" class="btn btn-outline-primary || password.value 1== confPass.value"
+            [disabled]="f.invalid">Login</button>
+
+    </form>
+</div>

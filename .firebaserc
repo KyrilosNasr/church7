@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "furniture-house-6121e"
+  },
+  "targets": {
+    "furniture-house-6121e": {
+      "hosting": {
+        "furniture-house": [
+          "furniture-house-6121e"
+        ]
+      }
+    }
+  }
+}
